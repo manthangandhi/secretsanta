@@ -1,6 +1,5 @@
 <!doctype html>
 <html>
-
     <head>
 
         <meta charset="utf-8" />
@@ -10,17 +9,16 @@
         <script src="vendors/Cryptojs.aes-3.1.2.js"></script>
 
         <style>
-
+             @import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&display=swap');
+             @import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&display=swap');
             * {
                 box-sizing: border-box;
             }
 
             html, body, .main {
                 margin: 0;
-
                 width: 100%;
                 height: 100%;
-
                 padding: 0;
             }
 
@@ -33,7 +31,7 @@
                 animation-iteration-count: infinite;
                 animation-timing-function: linear;
 
-                font-family: 'Comic Sans MS';
+                font-family: 'Noto Sans';
             }
 
             @keyframes snow {
@@ -43,16 +41,25 @@
 
             .spirit-of-christmas {
                 display: block;
-
                 position: absolute;
                 bottom: 0;
                 left: 0;
-
                 padding: 20px;
-
-                font-size: 10px;
+                text-align: center;
+                font-size: 14px;
                 text-decoration: none;
+                color: #FFFFFF;
+            }
 
+            .spirit-of-christmas-right {
+                display: block;
+                position: absolute;
+                bottom: 0;
+                right: 0;
+                padding: 20px;
+                text-align: center;
+                font-size: 14px;
+                text-decoration: none;
                 color: #FFFFFF;
             }
 
@@ -62,7 +69,6 @@
 
             .background {
                 position: absolute;
-
                 left: 0;
                 bottom: 0;
             }
@@ -70,7 +76,6 @@
             .wrapper {
                 margin: auto;
                 padding: 20px;
-
                 background: repeating-linear-gradient(
                     45deg,
                     #5CC48A,
@@ -87,12 +92,12 @@
             }
 
             .content {
-                padding: 40px;
-
+                padding: 50px;
                 background: #ffffff;
-
                 text-align: center;
             }
+            
+            .content img { margin-bottom: 30px;}
 
             .title {
                 font-size: 30px;
@@ -100,6 +105,7 @@
 
             #pairing-name {
                 font-size: 90px;
+                font-family: 'font-family: 'Dancing Script', cursive;' ;
             }
 
             #pairing-details {
@@ -143,19 +149,19 @@
     <body>
 
         <div class="main">
-
             <div class="wrapper">
                 <div class="content">
-
+                    <img  src="https://logos-download.com/wp-content/uploads/2016/10/Deloitte_logo_black.png" height="30px" width="150px"/>
+                    <br/>
                     <div class="title">Hi <span id="name"></span>! You've been paired with</div>
                     <script>document.getElementById('name').innerText = name</script>
-
+                    
                     <div class="pairing">
                         <div id="pairing-name"></div>
                         <div id="pairing-details"></div>
                         <script>
                             document.getElementById('pairing-name').innerText = pairingDefinition[1];
-
+                            
                             if (pairingDefinition[2]) {
                                 document.getElementById('pairing-details').innerText = pairingDefinition[2];
                             } else {
@@ -163,24 +169,25 @@
                             }
                         </script>
                     </div>
-
+                    
                     <div class="title">Good luck!</div>
-
-                    <script>
+                    
+                    <!-- <script>
                         if (queryString.extra) {
                             document.write('<iframe class="affiliate" src="http://rcm-eu.amazon-adsystem.com/e/cm?t=secrsant02e-21&o=8&p=48&l=ur1&category=books&banner=10DQAXJ7D1D2VTXMR682&f=ifr" width="728" height="90" scrolling="no" border="0" marginwidth="0" frameborder="0"></iframe>');
                         }
-                    </script>
-
+                    </script> -->
                 </div>
             </div>
-
-            <a href="http://arcanis.github.io/secretsanta/" class="spirit-of-christmas">
+            
+            <a href="http://manthangandhi.github.io/secretsanta/" class="spirit-of-christmas">
                 Want to start your own Secret Santa with your friends? Click here to get started!
-            </a>
-
+            </a> 
+            
+                <a href="mailto:mantgandhi@deloitte.com" class="spirit-of-christmas-right">
+                    For queries: Manthan Gandhi
+                </a>
+            
         </div>
-
     </body>
-
 </html>
