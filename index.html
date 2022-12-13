@@ -1,17 +1,14 @@
 <!doctype html>
 <html>
-
     <head>
-
         <meta charset="utf-8" />
         <title>Secret Santa Generator</title>
-
         <script src="vendors/Lodash-3.10.1.js"></script>
         <script src="vendors/Cryptojs.aes-3.1.2.js"></script>
-
         <script src="./SecretSanta.js"></script>
-
         <style>
+            
+            @import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&display=swap');
 
             * {
                 box-sizing: border-box;
@@ -19,10 +16,8 @@
 
             html, body, .main {
                 margin: 0;
-
                 width: 100%;
                 height: 100%;
-
                 padding: 0;
             }
 
@@ -30,8 +25,7 @@
                 background-image: url(assets/santa.png);
                 background-position: bottom right;
                 background-repeat: no-repeat;
-
-                /*font-family: 'Comic Sans MS';*/
+                font-family: 'Noto Sans';
             }
 
             .main {
@@ -41,9 +35,7 @@
             .part {
                 display: flex;
                 flex-direction: column;
-
                 padding: 20px;
-
                 flex: 1;
             }
 
@@ -53,60 +45,51 @@
 
             .instructions a {
                 text-decoration: none;
+                color: #26890d;
+            }
 
-                color: #0CB50C;
+            .instructions #title{
+                font-family: 'Dancing Script', cursive;
             }
 
             .input {
                 display: block;
                 align-self: stretch;
-
                 width: 100%;
                 flex: auto;
-
-                border: 10px solid #0CB50C;
+                /*border: 10px solid #0CB50C;*/
                 border-radius: 10px;
-
                 padding: 15px;
-
                 background-color: rgba(255, 255, 255, .7);
                 outline: none;
             }
 
             .generate {
                 display: block;
-
                 margin-top: 20px;
-
                 flex: none;
-                height: 100px;
-
-                border: 10px solid #0CB50C;
+                height: 80px;
+                border: 10px solid #EA1212;
                 border-radius: 10px;
-
                 font-family: inherit;
-                font-size: 40px;
-
+                font-size: 35px;
                 background-color: #EA1212;
                 color: #FFFFFF;
             }
 
             .generate:focus {
-                border-color: #E6E020;
-
+                /*border-color: #0f0000;*/
                 outline: none;
+                box-shadow: inset 0 -3em 3em rgba(0, 0, 0, 0.1), 0 0 0 2px rgb(255, 255, 255), 
+                0.3em 0.3em 1em rgba(0, 0, 0, 0.3);
             }
 
             .result {
                 margin-top: 20px;
-
                 flex: none;
-
-                border: 10px solid #E6E020;
+                border: 10px solid #26890d;
                 border-radius: 10px;
-
                 padding: 15px;
-
                 background: #FFFFFF;
             }
 
@@ -120,56 +103,49 @@
 
             .result.error {
                 border-color: #EA1212;
-
                 color: #EA1212;
             }
 
             .result-table {
                 table-layout: fixed;
-
                 width: 100%;
             }
 
             .result-name {
                 width: 30%;
-
                 padding: 5px 8px;
             }
 
             .result-link {
                 width: 100%;
                 overflow: hidden;
-
                 text-overflow: ellipsis;
                 white-space: nowrap;
             }
 
         </style>
-
     </head>
-
     <body>
-
+        
         <div class="main">
-
             <div class="part" style="overflow-y: auto">
+                
                 <div class="instructions">
-                    <h1><img src="assets/mistletoe.png" style="vertical-align: middle" /> Secret Santa Generator</h1>
-                    <p>No signup, no email, no bullshit. Just a straightforward <a href="https://github.com/arcanis/secretsanta">open-source</a> tool to help you generate your secret santa pairings. One static page, and that's it.</p>
+                    <img src="https://logos-download.com/wp-content/uploads/2016/10/Deloitte_logo_black.png" height="50px" width="250px"/>
+                    <h1 id = "title"><img src="assets/mistletoe.png" style="vertical-align: middle;" /> Secret Santa Generator</h1>
+                    <p>No signup, no email, no bullshit. Just a straightforward <a href="https://github.com/manthangandhi/secretsanta">open-source</a> tool to help you generate your secret santa pairings. One static page, and that's it.</p>
                     <p>In the most common case (no exclusion rules, pair each guest with another at random), enter the name of your guests one line at a time. Once done, press "generate" and you're all set: send the generated links to your guests (by mail, chat, whatever floats your boat) and their pairing will be revealed to them (and only them) once they open the link.</p>
-                    <h2>Where does this tool come from?</h2>
-                    <p>I wanted to make a Secret Santa over Facebook without having to reveal to anyone my guests email addresses (so nothing that would require a backend). I also wanted not to know who was paired with me, so I had to find a way to somehow obfuscate the information. And being a developer, well, my first thought was "Let's AES it, for fun and profits!". Classic.</p>
+                    <p style="margin: 0; display: block;">for queries: <a href="mailto:mantgandhi@deloitte.com">Manthan Gandhi</a></p>
                 </div>
             </div>
 
             <form id="form" class="part">
                 <textarea id="input" class="input" autofocus></textarea>
-                <button type="submit" class="generate">Generate your pairings</button>
+                <button type="submit" class="generate">Generate pairings</button>
                 <div id="result" class="result none"></div>
             </form>
-
         </div>
-
+        
         <script id="input-placeholder" type="text/placeholder">
             # You can add a user by adding a line
             Santa
@@ -196,40 +172,29 @@
     <script>
 
       function isAmazonEnabled() {
-
           const checkBox = document.getElementById('amazon');
-
           return checkBox ? checkBox.checked : false;
-
       }
 
       function persist() {
-
           if ( ! window.localStorage )
               return ;
-
           var amazon = isAmazonEnabled();
           var content = document.getElementById( 'input' ).value;
-
           window.localStorage.setItem( 'amazon', amazon );
           window.localStorage.setItem( 'input', content );
-
       }
 
       function restore() {
-
           if ( ! window.localStorage )
               return ;
-
           var amazon = window.localStorage.getItem( 'amazon' );
           var content = window.localStorage.getItem( 'input' );
 
           if (typeof amazon === 'undefined')
               amazon = true;
-
           if (typeof content === 'undefined')
               content = '';
-
           if ( document.getElementById( 'amazon' ) )
               document.getElementById( 'amazon' ).checked = amazon;
 
@@ -238,38 +203,27 @@
       }
 
       function reset() {
-
           var result = document.getElementById( 'result' );
-
           result.classList.add( 'none' );
           result.classList.remove( 'error' );
 
       }
 
       function error(text) {
-
           var result = document.getElementById( 'result' );
-
           result.classList.remove( 'none' );
           result.classList.add( 'error' );
-
           result.innerText = text;
-
       }
 
       function success( pairings ) {
-
           var result = document.getElementById( 'result' );
-
           result.classList.remove( 'none' );
           result.classList.remove( 'error' );
-
           result.innerHTML = '';
-
           var table = document.createElement( 'table' );
           table.className = 'result-table';
           result.appendChild( table );
-
           var names = Object.keys( pairings ).sort();
 
           for ( var t = 0, T = names.length; t < T; ++ t ) {
@@ -308,29 +262,22 @@
               link.href = window.location.protocol + '//' + window.location.host + pairingPath + pairingQueryString;
               link.target = '_blank';
               link.innerText = link.href;
-
           }
-
       }
 
       function updateAmazon() {
-
           var result = document.getElementById( 'result' );
           var links = result.getElementsByTagName( 'a' );
 
           for ( var t = 0; t < links.length; ++t ) {
-
               var link = links[t];
 
               if ( isAmazonEnabled() )
                   link.href += '&extra=1';
               else
                   link.href = link.href.replace( /&extra=[01]/, '' );
-
               link.innerText = link.href;
-
           }
-
       }
 
       function generate( e ) {
