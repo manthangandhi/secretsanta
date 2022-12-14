@@ -62,6 +62,12 @@
                 text-decoration: none;
                 color: #FFFFFF;
             }
+            
+            .spirit-of-christmas-right a{
+                text-decoration: none;
+                color: #ffffff;
+            }
+            
 
             .main {
                 display: flex;
@@ -96,7 +102,19 @@
                 background: #ffffff;
                 text-align: center;
             }
+
+            .pre-content {
+                padding: 50px;
+                background: #ffffff;
+                text-align: center;
+            }
             
+            .pre-content p{
+                display: block;
+                /* margin: 30px; */
+                font-size: 18px;
+                width: 800px;
+            }
             .content img { margin-bottom: 30px;}
 
             .title {
@@ -110,24 +128,33 @@
 
             #pairing-details {
                 margin-bottom: 20px;
-
                 font-size: 20px;
             }
 
-            .affiliate {
+            .generate {
+                text-align: center;
                 display: block;
-                box-sizing: content-box;
-
-                margin-top: 40px;
-
-                border: none;
-
-                background: rgba(255, 255, 255, .7);
+                margin-top: 20px;
+                flex: none;
+                height: 50px;
+                border: 10px solid #FB3B3B;
+                border-radius: 10px;
+                font-family: inherit;
+                font-size: 20px;
+                background-color: #FB3B3B;
+                color: #FFFFFF;
             }
 
-            .affiliate + .affiliate {
-                margin-top: 40px;
+            .generate:hover {
+                
+                outline: none;
+                box-shadow: inset 0 -3em 3em rgba(0, 0, 0, 0), 0 0 0 2px rgb(255, 255, 255), 
+                0.3em 0.3em 1em rgba(0, 0, 0, 0.3);
             }
+
+            #content { display: none;}
+            #pre-content { display: block;}
+
 
         </style>
 
@@ -144,13 +171,34 @@
 
         </script>
 
+        <script>
+           function toggle() {
+                var mainContent = document.getElementById("content");
+                var preContent = document.getElementById("pre-content");
+                console.log(content)
+                // if (mainContent.style.display === "none") {
+                    mainContent.style.display = "block";
+                    preContent.style.display = "none"
+                // } 
+            }    
+            
+
+        </script>
+
     </head>
 
     <body>
 
         <div class="main">
             <div class="wrapper">
-                <div class="content">
+                
+                <div class="pre-content" id="pre-content">
+                    <img  src="https://logos-download.com/wp-content/uploads/2016/10/Deloitte_logo_black.png" height="30px" width="150px"/>
+                    <p>Who could be your secret Santa. Whether he is or she is? Don’t worry. Just open your gift, there is a hint you will see. Merry Christmas</p>
+                    <center><button type="submit" class="generate" onclick="toggle()">Submit</button></center>
+                </div>
+                
+                <div class="content" id="content">
                     <img  src="https://logos-download.com/wp-content/uploads/2016/10/Deloitte_logo_black.png" height="30px" width="150px"/>
                     <br/>
                     <div class="title">Hi <span id="name"></span>! You've been paired with</div>
@@ -172,11 +220,6 @@
                     
                     <div class="title">Good luck!</div>
                     
-                    <!-- <script>
-                        if (queryString.extra) {
-                            document.write('<iframe class="affiliate" src="http://rcm-eu.amazon-adsystem.com/e/cm?t=secrsant02e-21&o=8&p=48&l=ur1&category=books&banner=10DQAXJ7D1D2VTXMR682&f=ifr" width="728" height="90" scrolling="no" border="0" marginwidth="0" frameborder="0"></iframe>');
-                        }
-                    </script> -->
                 </div>
             </div>
             
@@ -184,9 +227,11 @@
                 Want to start your own Secret Santa with your friends? Click here to get started!
             </a> 
             
-                <a href="mailto:mantgandhi@deloitte.com" class="spirit-of-christmas-right">
-                    For queries: Manthan Gandhi
-                </a>
+                <div class="spirit-of-christmas-right">
+                    For queries: 
+                    <a href="mailto:prachimishra5@deloitte.com">Prachi Mishra</a> |
+                    <a href="mailto:shipthakur@deloitte.com">Shipra Thakur</a> 
+                </div>
             
         </div>
     </body>
