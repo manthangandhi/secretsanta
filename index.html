@@ -22,10 +22,23 @@
             }
 
             body {
-                background-image: url(assets/santa.png);
+                /* background-image: url(assets/santa.png); */
+                background: url(./assets/snow.png), url(./assets/santa.png), url(./assets/snow.png), radial-gradient(#FB3B3B, #EF3D3D);
+                background-repeat: repeat, no-repeat, repeat, no-repeat;
+
+                animation-name: snow;
+                animation-duration: 5s;
+                animation-iteration-count: infinite;
+                animation-timing-function: linear;
+
                 background-position: bottom right;
-                background-repeat: no-repeat;
+                /* background-repeat: no-repeat; */
                 font-family: 'Noto Sans';
+            }
+
+            @keyframes snow {
+                from { background-position: 130px 40px, bottom right, 0 0, 0 0; }
+                to { background-position: 130px 640px, bottom right, 0 300px, 0 0; }
             }
 
             .main {
@@ -45,11 +58,12 @@
 
             .instructions a {
                 text-decoration: none;
-                color: #26890d;
+                color: #fff;
             }
 
             .instructions #title{
                 font-family: 'Dancing Script', cursive;
+                color: #fff;
             }
 
             .input {
@@ -60,7 +74,7 @@
                 /*border: 10px solid #0CB50C;*/
                 border-radius: 10px;
                 padding: 15px;
-                background-color: rgba(255, 255, 255, .7);
+                background-color: rgba(255, 255, 255, .8);
                 outline: none;
             }
 
@@ -69,15 +83,15 @@
                 margin-top: 20px;
                 flex: none;
                 height: 80px;
-                border: 10px solid #EA1212;
+                border: 10px solid #26890d;
                 border-radius: 10px;
                 font-family: inherit;
                 font-size: 35px;
-                background-color: #EA1212;
+                background-color: #26890d;
                 color: #FFFFFF;
             }
 
-            .generate:focus {
+            .generate:focus , .generate:hover {
                 /*border-color: #0f0000;*/
                 outline: none;
                 box-shadow: inset 0 -3em 3em rgba(0, 0, 0, 0.1), 0 0 0 2px rgb(255, 255, 255), 
@@ -135,7 +149,8 @@
                     <h1 id = "title"><img src="assets/mistletoe.png" style="vertical-align: middle;" /> Secret Santa Generator</h1>
                     <p>No signup, no email, no bullshit. Just a straightforward <a href="https://github.com/manthangandhi/secretsanta">open-source</a> tool to help you generate your secret santa pairings. One static page, and that's it.</p>
                     <p>In the most common case (no exclusion rules, pair each guest with another at random), enter the name of your guests one line at a time. Once done, press "generate" and you're all set: send the generated links to your guests (by mail, chat, whatever floats your boat) and their pairing will be revealed to them (and only them) once they open the link.</p>
-                    <p style="margin: 0; display: block;">for queries: <a href="mailto:mantgandhi@deloitte.com">Manthan Gandhi</a></p>
+                    <p style="margin: 0; display: block;">for queries:  <a href="mailto:prachimishra5@deloitte.com">Prachi Mishra</a> |
+                        <a href="mailto:shipthakur@deloitte.com">Shipra Thakur</a> </p>
                 </div>
             </div>
 
